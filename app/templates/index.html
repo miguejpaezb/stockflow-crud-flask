@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="assets/icons/inventory_2_24dp_196CAF_FILL0_wght400_GRAD0_opsz24.svg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>StockFlow</title>
+  </head>
+
+  <body>
+    <!-- ======= HEADER ======= -->
+    <header class="app-header">
+      <h1 class="app-title">StockFlow</h1>
+
+      <a href="#" class="repo-link">Repo</a>
+    </header>
+
+    <!-- ======= CONTENIDO PRINCIPAL ======= -->
+    <main class="app-container">
+      <section class="inventory-section">
+        <input
+          type="search"
+          id="search-input"
+          class="search-input"
+          placeholder="Buscar producto..."
+        />
+
+        <table class="inventory-table">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Stock</th>
+              <th>Precio</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <!-- ======= FORMULARIO ======= -->
+      <aside class="product-form-section">
+        <h2 class="form-title">Agregar Nuevo Producto</h2>
+
+        <form class="product-form">
+          <label for="product-name">Producto:</label>
+          <input type="text" id="product-name" required />
+
+          <label for="product-category">Categoria:</label>
+          <input
+            type="text"
+            id="product-category"
+            list="products-categories"
+            required
+          />
+
+          <datalist id="products-categories">
+            <option value="Baterias"></option>
+            <option value="Cargadores"></option>
+            <option value="Audifonos"></option>
+          </datalist>
+
+          <label for="product-stock">Stock:</label>
+          <input type="number" id="product-stock" />
+
+          <label for="minimum-stock">Stock Mínimo:</label>
+          <input type="number" id="minimum-stock" required />
+
+          <label for="product-price">Precio:</label>
+          <input type="number" id="product-price" required />
+
+          <div class="form-buttons">
+            <input type="submit" value="Guardar" />
+            <input type="reset" value="Limpiar" />
+          </div>
+        </form>
+      </aside>
+    </main>
+
+    <!-- ======= MODAL ======= -->
+    <div class="modal-overlay" id="stock-modal">
+      <div class="modal-box">
+        <button class="modal-close-btn" id="close-stock-modal">
+          <img
+            src="assets/icons/close_24dp_FF0000_FILL0_wght400_GRAD0_opsz24.svg"
+            alt="Cerrar modal"
+          />
+        </button>
+
+        <h2>Agregar Stock</h2>
+
+        <form class="modal-form">
+          <label for="stock-amount">Cantidad:</label>
+
+          <input type="number" id="stock-amount" required />
+
+          <input type="submit" value="Agregar" />
+        </form>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/services/api.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
