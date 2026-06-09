@@ -1,0 +1,568 @@
+/* =========================
+   FUENTES
+========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap');
+
+/* =========================
+   VARIABLES GLOBALES
+========================= */
+
+:root {
+
+    /* =========================
+       COLORES
+    ========================= */
+
+    --color-primary: #0f4169;
+    --color-primary-dark: #092b47;
+
+    --color-secondary: #5b4bff;
+    --color-secondary-dark: #2d2545;
+
+    --color-success: #1f8b4c;
+    --color-danger: #d62828;
+
+    --color-white: #ffffff;
+    --color-black: #000000;
+
+    --color-text: #555555;
+
+    --color-gray-100: #f8f8f8;
+    --color-gray-200: #ececec;
+    --color-gray-300: #dcdcdc;
+    --color-gray-400: #979797;
+    --color-gray-500: #7a7a7a;
+
+    --overlay-color: rgba(0, 0, 0, .5);
+
+    /* =========================
+       TIPOGRAFÍA
+    ========================= */
+
+    --font-family-base: "Nunito", sans-serif;
+
+    --font-size-xs: .75rem;
+    --font-size-sm: .85rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.3rem;
+    --font-size-xl: 2rem;
+
+    --font-weight-normal: 400;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* =========================
+       ESPACIADOS
+    ========================= */
+
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 12px;
+    --spacing-lg: 16px;
+    --spacing-xl: 20px;
+    --spacing-2xl: 24px;
+
+    /* =========================
+       BORDES
+    ========================= */
+
+    --border-width: 1px;
+
+    --border-color: var(--color-gray-300);
+
+    --border-primary: var(--border-width) solid var(--border-color);
+
+    /* =========================
+       BORDER RADIUS
+    ========================= */
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+
+    /* =========================
+       SOMBRAS
+    ========================= */
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, .08);
+
+    --shadow-md: 0 2px 6px rgba(0, 0, 0, .12);
+
+    --shadow-lg: 0 4px 12px rgba(0, 0, 0, .18);
+
+    /* =========================
+       TRANSICIONES
+    ========================= */
+
+    --transition-fast: .2s;
+    --transition-normal: .3s;
+
+    /* =========================
+       TAMAÑOS
+    ========================= */
+
+    --layout-height: 550px;
+
+    --sidebar-width: 300px;
+
+    --modal-width: 350px;
+
+    /* =========================
+       Z-INDEX
+    ========================= */
+
+    --z-modal: 1000;
+}
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   ESTILOS GENERALES
+========================= */
+
+body {
+    font-family: var(--font-family-base);
+
+    background: rgba(0, 0, 0, .02);
+
+    color: var(--color-text);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding:
+        var(--spacing-md) var(--spacing-lg);
+
+    background: var(--color-primary);
+
+    color: var(--color-white);
+
+    box-shadow: var(--shadow-sm);
+}
+
+.app-title {
+    font-size: var(--font-size-lg);
+}
+
+.repo-link {
+    color: var(--color-white);
+
+    text-decoration: none;
+
+    font-weight: var(--font-weight-bold);
+
+    transition: var(--transition-fast);
+}
+
+.repo-link:hover {
+    opacity: .8;
+}
+
+/* =========================
+   CONTENIDO PRINCIPAL
+========================= */
+
+.app-container {
+    display: flex;
+    gap: var(--spacing-xl);
+
+    height: var(--layout-height);
+
+    margin: var(--spacing-md);
+
+    padding: var(--spacing-lg);
+
+    background: var(--color-white);
+
+    border-radius: var(--radius-md);
+
+    box-shadow: var(--shadow-md);
+
+    overflow: hidden;
+}
+
+/* =========================
+   SECCIÓN TABLA
+========================= */
+
+.inventory-section {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    overflow: hidden;
+}
+
+/* =========================
+   BUSCADOR
+========================= */
+
+.search-input {
+    width: 100%;
+
+    padding:
+        var(--spacing-md) var(--spacing-lg);
+
+    margin-bottom: var(--spacing-lg);
+
+    border: var(--border-primary);
+
+    border-radius: var(--radius-sm);
+
+    outline: none;
+
+    font-size: var(--font-size-sm);
+
+    transition: var(--transition-fast);
+}
+
+.search-input:focus {
+    border-color: var(--color-primary);
+}
+
+/* =========================
+   TABLA
+========================= */
+
+.inventory-table {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+
+    background: var(--color-white);
+
+    border-radius: var(--radius-md);
+
+    overflow: hidden;
+
+    box-shadow: var(--shadow-sm);
+}
+
+/* =========================
+   HEADER TABLA
+========================= */
+
+.inventory-table thead {
+    background: var(--color-primary);
+
+    color: var(--color-white);
+
+    flex-shrink: 0;
+}
+
+.inventory-table thead tr {
+    display: table;
+
+    width: 100%;
+
+    table-layout: fixed;
+}
+
+/* =========================
+   BODY TABLA
+========================= */
+
+.inventory-table tbody {
+    display: block;
+
+    height: 100%;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.inventory-table tbody tr {
+    display: table;
+
+    width: 100%;
+
+    table-layout: fixed;
+
+    transition: var(--transition-fast);
+
+    border-bottom:
+        var(--border-width) solid var(--color-gray-200);
+}
+
+.inventory-table tbody tr:nth-child(even) {
+    background: var(--color-gray-100);
+}
+
+.inventory-table tbody tr:hover {
+    background: var(--color-gray-200);
+}
+
+/* =========================
+   CELDAS
+========================= */
+
+.inventory-table th,
+.inventory-table td {
+    padding:
+        var(--spacing-lg);
+
+    text-align: left;
+
+    font-size: var(--font-size-sm);
+}
+
+.inventory-table th {
+    font-weight: var(--font-weight-semibold);
+}
+
+/* =========================
+   ACCIONES TABLA
+========================= */
+
+.actions-cell {
+    display: flex;
+
+    gap: var(--spacing-md);
+
+    flex-wrap: wrap;
+}
+
+.actions-cell a {
+    color: var(--color-secondary);
+
+    text-decoration: none;
+
+    font-weight: var(--font-weight-semibold);
+
+    transition: var(--transition-fast);
+}
+
+.actions-cell a:hover {
+    color: var(--color-secondary-dark);
+}
+
+/* =========================
+   FORMULARIO
+========================= */
+
+.product-form-section {
+    width: var(--sidebar-width);
+}
+
+.form-title {
+    margin-bottom: var(--spacing-lg);
+
+    font-size: var(--font-size-lg);
+}
+
+.product-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-form label {
+    margin-bottom: var(--spacing-xs);
+
+    font-size: var(--font-size-sm);
+
+    font-weight: var(--font-weight-semibold);
+}
+
+.product-form input {
+    width: 100%;
+
+    padding: var(--spacing-md);
+
+    margin-bottom: var(--spacing-sm);
+
+    border: var(--border-primary);
+
+    border-radius: var(--radius-sm);
+
+    font-size: var(--font-size-sm);
+
+    transition: var(--transition-fast);
+}
+
+.product-form input:focus {
+    border-color: var(--color-primary);
+
+    outline: none;
+}
+
+/* =========================
+   BOTONES FORMULARIO
+========================= */
+
+.form-buttons {
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--spacing-sm);
+
+    margin-top: var(--spacing-sm);
+}
+
+.form-buttons input {
+    border: none;
+
+    color: var(--color-white);
+
+    font-weight: var(--font-weight-bold);
+
+    cursor: pointer;
+
+    transition: var(--transition-fast);
+}
+
+.form-buttons input:hover {
+    opacity: .9;
+}
+
+.form-buttons input[type="submit"] {
+    background: var(--color-primary);
+}
+
+.form-buttons input[type="reset"] {
+    background: var(--color-gray-500);
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--overlay-color);
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: var(--transition-normal);
+
+    z-index: var(--z-modal);
+}
+
+/* =========================
+   MODAL ACTIVO
+========================= */
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* =========================
+   CAJA MODAL
+========================= */
+
+.modal-box {
+    position: relative;
+
+    width: var(--modal-width);
+
+    padding: var(--spacing-xl);
+
+    background: var(--color-white);
+
+    border-radius: var(--radius-md);
+
+    box-shadow: var(--shadow-lg);
+}
+
+/* =========================
+   BOTÓN CERRAR MODAL
+========================= */
+
+.modal-close-btn {
+    position: absolute;
+
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+/* =========================
+   FORMULARIO MODAL
+========================= */
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: var(--spacing-lg);
+}
+
+.modal-form label {
+    margin-bottom: var(--spacing-xs);
+
+    font-size: var(--font-size-sm);
+
+    font-weight: var(--font-weight-semibold);
+}
+
+.modal-form input {
+    padding: var(--spacing-md);
+
+    margin-bottom: var(--spacing-md);
+
+    border: var(--border-primary);
+
+    border-radius: var(--radius-sm);
+
+    font-size: var(--font-size-sm);
+}
+
+.modal-form input:focus {
+    border-color: var(--color-primary);
+
+    outline: none;
+}
+
+.modal-form input[type="submit"] {
+    border: none;
+
+    background: var(--color-primary);
+
+    color: var(--color-white);
+
+    font-weight: var(--font-weight-bold);
+
+    cursor: pointer;
+
+    transition: var(--transition-fast);
+}
+
+.modal-form input[type="submit"]:hover {
+    background: var(--color-primary-dark);
+}
