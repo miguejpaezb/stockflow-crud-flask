@@ -1,0 +1,41 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+venv/
+env/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# =========================
+# Variables de entorno (credenciales)
+# =========================
+.env
+app/env
+
+# =========================
+# IDE / Editores
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# =========================
+# Sistema operativo
+# =========================
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# =========================
+# Logs y temporales
+# =========================
+*.log
+*.tmp
