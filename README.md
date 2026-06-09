@@ -38,11 +38,6 @@ ADSO-StockFlow/
 │       └── index.html          # Única página HTML (SPA)
 ├── sql/
 │   └── database.sql            # Esquema de BD + datos de prueba
-├── about/                      # Documentación detallada
-│   ├── main.md                 # Backend Flask explicado
-│   ├── templates.md            # Plantilla HTML explicada
-│   ├── static.md               # Frontend (CSS + JS) explicado
-│   └── database.md             # Esquema SQL explicado
 └── README.md
 ```
 
@@ -61,7 +56,7 @@ ADSO-StockFlow/
 ### 1. Clonar el repositorio
 
 ```bash
-git clone <url-del-repo>
+git clone https://github.com/miguejpaezb/stockflow-crud-flask.git
 cd ADSO-StockFlow/app
 ```
 
@@ -129,19 +124,6 @@ curl -X POST http://localhost:5000/api/products \
 # Respuesta
 # {"message": "Producto creado exitosamente", "id": 7}
 ```
-
----
-
-## Documentación detallada
-
-Para entender a fondo cada parte del sistema:
-
-| Archivo                                    | Contenido                                                                                                                  |
-| ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| [`about/main.md`](about/main.md)           | Backend Flask: imports, JSON provider, DB config, cada endpoint con su SQL, patrones de diseño                             |
-| [`about/templates.md`](about/templates.md) | HTML: `<head>`, header, buscador, tabla, formulario, modal, scripts, mapa DOM↔JS                                           |
-| [`about/static.md`](about/static.md)       | Frontend: `main.css` (variables, layout, tabla con scroll, modal), `api.js` (6 funciones fetch), `app.js` (orquestador UI) |
-| [`about/database.md`](about/database.md)   | Esquema SQL: `CREATE DATABASE`, columna por columna, `DECIMAL` vs `FLOAT`, índices, datos de prueba                        |
 
 ---
 
