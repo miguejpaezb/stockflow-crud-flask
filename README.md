@@ -8,11 +8,12 @@ Aplicación web ligera para gestión de inventario con **Flask** (backend), **My
 
 | Capa          | Tecnología                                          |
 | ------------- | --------------------------------------------------- |
-| Backend       | Python 3, Flask 3.x                                 |
+| Backend       | Python 3, Flask 3.x (POO: MVC con dataclasses)      |
 | Base de datos | MySQL 8+                                            |
 | Frontend      | HTML5, CSS3 (custom properties), JavaScript vanilla |
 | Comunicación  | REST API JSON (`fetch`)                             |
 | Conector DB   | `mysql-connector-python`                            |
+| Paradigma     | Orientado a objetos + MethodView + Repository       |
 
 ---
 
@@ -20,24 +21,34 @@ Aplicación web ligera para gestión de inventario con **Flask** (backend), **My
 
 ```
 ADSO-StockFlow/
-├── app/                        # Aplicación Flask
-│   ├── main.py                 # Servidor: rutas API, conexión MySQL
-│   ├── .env                    # Variables de entorno (credenciales DB)
-│   ├── env.example             # Plantilla de .env para otros devs
-│   ├── static/                 # Archivos estáticos (CSS, JS, íconos)
-│   │   ├── css/
-│   │   │   └── main.css        # Hoja de estilos completa
+├── main.py                          # Punto de entrada: create_app().run()
+├── app/                             # Paquete Flask (POO)
+│   ├── __init__.py                  # Fábrica create_app() — inyecta dependencias
+│   ├── config.py                    # @dataclass Config — lee .env
+│   ├── database.py                  # Clase Database — conexiones MySQL
+│   ├── json_provider.py             # Serializador JSON para Decimal
+│   ├── .env                         # Variables de entorno (credenciales DB)
+│   ├── env.example                  # Plantilla de .env
+│   ├── models/
+│   │   └── product.py               # @dataclass Product — entidad de dominio
+│   ├── repositories/
+│   │   └── product_repository.py    # ProductRepository — capa de acceso a datos
+│   ├── controllers/
+│   │   ├── product_list_controller.py   # GET / POST /api/products
+│   │   ├── product_item_controller.py   # GET / PUT / DELETE /api/products/<id>
+│   │   └── stock_controller.py          # PUT /api/products/<id>/stock
+│   ├── static/                      # Frontend estático (CSS, JS, íconos)
+│   │   ├── css/main.css
 │   │   ├── js/
-│   │   │   ├── app.js          # Orquestador de la UI
-│   │   │   ├── modal.js        # [Legacy] Lógica del modal
-│   │   │   └── services/
-│   │   │       └── api.js      # Capa de API (fetch al backend)
-│   │   └── assets/
-│   │       └── icons/          # Íconos SVG (Material Design)
+│   │   │   ├── app.js
+│   │   │   ├── modal.js             # [Legacy]
+│   │   │   └── services/api.js
+│   │   └── assets/icons/
 │   └── templates/
-│       └── index.html          # Única página HTML (SPA)
+│       └── index.html               # Página SPA (renderizada por Flask)
 ├── sql/
-│   └── database.sql            # Esquema de BD + datos de prueba
+│   └── database.sql                 # Esquema BD + datos de prueba
+├── .gitignore
 └── README.md
 ```
 
@@ -57,7 +68,7 @@ ADSO-StockFlow/
 
 ```bash
 git clone https://github.com/miguejpaezb/stockflow-crud-flask.git
-cd ADSO-StockFlow/app
+cd ADSO-StockFlow
 ```
 
 ### 2. Crear entorno virtual e instalar dependencias
@@ -71,7 +82,7 @@ pip install flask==3.1.0 flask-cors==5.0.0 mysql-connector-python==9.3.0 python-
 ### 3. Configurar variables de entorno
 
 ```powershell
-copy env.example .env
+copy app\env.example app\.env
 ```
 
 Editar `app/.env` con las credenciales de tu MySQL:
@@ -87,7 +98,7 @@ DB_NAME=stockflow_db
 
 ```powershell
 # Desde el monitor de MySQL o línea de comandos
-mysql -u root -p < ..\sql\database.sql
+mysql -u root -p < sql\database.sql
 ```
 
 El script crea la base de datos `stockflow_db`, la tabla `products` y 6 productos de prueba.

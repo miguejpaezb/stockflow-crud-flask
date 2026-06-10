@@ -5,18 +5,21 @@ __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
-venv/
-env/
-.venv/
 *.egg-info/
 dist/
 build/
+wheels/
+*.egg
+
+# Entorno virtual
+venv/
+env/
+.venv/
 
 # =========================
 # Variables de entorno (credenciales)
 # =========================
 .env
-app/env
 
 # =========================
 # IDE / Editores
@@ -26,6 +29,8 @@ app/env
 *.swp
 *.swo
 *~
+*.sublime-workspace
+*.sublime-project
 
 # =========================
 # Sistema operativo
@@ -33,9 +38,17 @@ app/env
 Thumbs.db
 .DS_Store
 Desktop.ini
+$RECYCLE.BIN/
 
 # =========================
 # Logs y temporales
 # =========================
 *.log
 *.tmp
+*.sqlite3
+*.db
+
+# =========================
+# Variables de entorno falsas (sin punto)
+# =========================
+app/env
